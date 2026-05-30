@@ -132,15 +132,16 @@ class keyword_panel_builder:
         return panel_df
 
 
-if __name__ == "__main__":
 
-    topic_groups = {
-        "Gun Violence": [
-            "gun", "rifle", "shotgun", "firearm", "pistol", "revolver",
-            "handgun", "carbine", "bullet", "ak-47", "ar-15", "m16",
-            "glock", "colt", "remington", "winchester", "mossberg",
-            "semiautomatic", "assault rifle", "sniper rifle", "machine gun",
-            "submachine gun", "grenade launcher"
+# Set of Topic Groups and Words that we run word searches for. 
+topic_groups = {
+        "Gun Violence": [ # Will's Full set of Firearm Mentions
+            "shotgun", "submachine gun", "machine gun", "handgun", "gun", "firearm",
+                "carbine", "pistol", "revolver", "remington", "winchester", "mossberg",
+                "cannon", "bullet", "semiautomatic gun", "semiautomatic carbine",
+                "semiautomatic rifle", "sniper rifle", "grenade launcher",
+                "automatic rifle", "assault rifle", "m16", "glock", "colt",
+                "rifle", "ak-47", "ar-15"
         ],
         "LGBTQ Viewpoints": [
         "gay", "gays", "gay rights", "gay community",
@@ -165,15 +166,46 @@ if __name__ == "__main__":
             ]
     }
 
+
+
+if __name__ == "__main__":
+
+
     pipeline = keyword_panel_builder(topic_groups=topic_groups)
     # df = pd.read_parquet("atlantic_articles.parquet", engine="pyarrow") 
 
-    panel = pipeline.run(
-        input_dataframe= pd.read_csv("ChickTracks.csv"), 
-        output_path="ChickTracks_word_search.csv",
-        text_col="Responses"
-    )
+    # charisma = pipeline.run(
+    #     input_dataframe= pd.read_csv('Text Data Magazines CSV/CharismaFinal.csv'), 
+    #     output_path='Word Search Data/CharismaFinal_word_search.csv',
+    #     text_col="Text"
+    # )
+    # print(charisma.head(10))
 
-    print(panel.head(10))
+    # chicktracts = pipeline.run(
+    #     input_dataframe= pd.read_csv('Text Data Magazines CSV/ChickTracks.csv'), 
+    #     output_path='Word Search Data/ChickTracks_word_search.csv',
+    #     text_col="Responses"
+    # )
 
+    # print(chicktracts.head(10))
+
+    # christianitytoday = pipeline.run(
+    #     input_dataframe= pd.read_csv('Text Data Magazines CSV/FinalToday.csv'), 
+    #     output_path='Word Search Data/FinalToday_word_search.csv',
+    #     text_col="Text"
+    # )
+
+    world = pipeline.run(
+        input_dataframe= pd.read_csv('Text Data Magazines CSV/WorldFinal.csv'), 
+        output_path = 'Word Search Data/World_word_search.csv',
+        text_col = 'Text' )
+
+    print(world.head(10))
+
+    atlantic = pipeline.run(
+        input_dataframe= pd.read_csv("Text Data Magazines CSV/AtlanticPageSeparated.csv") , 
+        output_path = 'Word Search Data/Atlantic_word_search.csv',
+        text_col = 'Text')
+
+    print(atlantic.head(10))
 
