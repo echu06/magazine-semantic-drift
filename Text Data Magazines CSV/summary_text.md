@@ -1,0 +1,1 @@
+This folder is primarily just a folder of CSV files pulled by Parker McCoog. Each CSV file contains text data from many different magazines: Charisma, Chick Tracts, Christianity Today, and Atlantic magazine. 
