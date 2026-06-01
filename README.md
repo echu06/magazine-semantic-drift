@@ -16,5 +16,6 @@ Main Pipeline:
 
 3. Thirdly, we calculate roBERTa sentiment in **roberta_pipeline.py** using the **time_parser.py** package and other pre-sets. You only need to call the pipeline, add time bins, and text column names to calculate roberta sentiment. The roberta sentiment will be stored in the **Roberta Data** folder. 
 
+All the packages that need to be downloaded are directly in requirements.txt.
 
 
